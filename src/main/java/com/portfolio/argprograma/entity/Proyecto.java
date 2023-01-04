@@ -23,7 +23,7 @@ import lombok.Setter;
 public class Proyecto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
     @NotBlank
     @Size(min = 1, max = 40, message = "no cumple con la longitud")
     private String institucion;
@@ -41,7 +41,7 @@ public class Proyecto {
     @Lob
     private String temauno;
    
-    private Date anio;
+    private String anio;
     @NotNull
     @Size(min = 1, max = 40, message = "no cumple con la longitud")
     private String estado;
@@ -49,7 +49,7 @@ public class Proyecto {
     public Proyecto() {
     }
 
-    public Proyecto(String institucion, String proyecto, String profesion, String logoproyecto, String tema, String temauno, Date anio, String estado) {
+    public Proyecto(String institucion, String proyecto, String profesion, String logoproyecto, String tema, String temauno, String anio, String estado) {
         this.institucion = institucion;
         this.proyecto = proyecto;
         this.profesion = profesion;

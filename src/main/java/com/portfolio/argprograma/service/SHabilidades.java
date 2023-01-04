@@ -29,14 +29,26 @@ public class SHabilidades implements ISHabilidades{
     }
 
     @Override
-    public void borrarHabilidad(Long id) {
+    public void borrarHabilidad(int id) {
        rHabilidad.deleteById(id);
     }
 
     @Override
-    public Habilidades buscarHabilidad(Long id) {
+    public Habilidades buscarHabilidad(int id) {
         //acá si no encuentro la habilidad, devuelvo null por eso va el orElse
         Habilidades habil = rHabilidad.findById(id).orElse(null);
         return habil;
+    }
+    @Override
+    public void saveHabilidad(Habilidades habil) {
+       rHabilidad.save(habil);
+    }
+    @Override
+    public boolean existById(int id) {
+
+        rHabilidad.existsById(id);
+
+        return true;
+
     }
 }

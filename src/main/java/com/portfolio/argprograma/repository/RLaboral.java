@@ -9,6 +9,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface RLaboral extends JpaRepository<Laboral, Long>{
+public interface RLaboral extends JpaRepository<Laboral, Integer>{
     
 }

@@ -29,14 +29,29 @@ public class SBanner implements ISBanner{
     }
 
     @Override
-    public void borrarBanner(Long id) {
+    public void borrarBanner(int id) {
        rBanner.deleteById(id);
     }
 
     @Override
-    public Banner buscarBanner(Long id) {
+    public Banner buscarBanner(int id) {
         //acá si no encuentro la educacion, devuelvo null por eso va el orElse
-        Banner educa = rBanner.findById(id).orElse(null);
-        return educa;
+        Banner bann = rBanner.findById(id).orElse(null);
+        return bann;
+    }
+    
+    @Override
+    public void saveBanner(Banner bann) {
+       rBanner.save(bann);
+    }
+    
+    @Override
+
+    public boolean existById(int id) {
+
+        rBanner.existsById(id);
+
+        return true;
+
     }
 }

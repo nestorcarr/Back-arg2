@@ -7,7 +7,8 @@ import com.portfolio.argprograma.entity.Persona;
 import com.portfolio.argprograma.service.SPersona;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,17 +17,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+//@Controller
 @RequestMapping("persona")
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
 public class CPersona {
     @Autowired
-    SPersona persoServ;
+    private SPersona persoServ;
 
     @GetMapping ("/ver")
     @ResponseBody
@@ -34,19 +34,29 @@ public class CPersona {
         return persoServ.verPersonas();
     }
 
+    //@PreAuthorize("hasRole('ADMIN')")
     @PostMapping ("/new")
     public String agregarPersona (@RequestBody Persona perso){
         persoServ.crearPersona(perso);
         return "La persona fue creada correctamente";
     }
 
+    //@PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping ("/delete/{id}")
-    public String eliminarPersona(@PathVariable Long id){
+    public String eliminarPersona(@PathVariable int id){
         persoServ.borrarPersona(id);
         return "La persona fue borrada correctamente";
     }
 
+    //@PreAuthorize("hasRole('ADMIN')")
     @PutMapping ("/editar/{id}")
+    public Persona editPersona(@PathVariable int id, 
+            @RequestBody Persona perso){
+            persoServ.savePersona(perso);
+            return perso;
+    }
+
+    /*
     public Persona editPersona (@PathVariable Long id,
                                 @RequestParam ("nombre") String nuevoNombre,
                                 @RequestParam ("apellido") String nuevoApellido,
@@ -69,5 +79,18 @@ public class CPersona {
 
         return perso;
 
+    }*/
+    
+    @GetMapping("/detail/{id}")
+    public ResponseEntity<Persona> getById(@PathVariable int id) {
+        if (persoServ.existById(id)) {
+            Persona persona = persoServ.buscarPersona(id); //getOne
+            return new ResponseEntity(persona, HttpStatus.OK);
+        } else {
+            return new ResponseEntity(HttpStatus.NOT_FOUND);
+        }
+ 
     }
+
+    
 }

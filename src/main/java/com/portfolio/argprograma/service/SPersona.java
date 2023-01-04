@@ -31,21 +31,38 @@ public class SPersona implements ISPersona{
     public void crearPersona(Persona per) {
         rPersona.save(per);
     }
-
+  
     @Override
-    public void borrarPersona(Long id) {
+    public void borrarPersona(int id) {
        rPersona.deleteById(id);
     }
 
     @Override
-    public Persona buscarPersona(Long id) {
+    public Persona buscarPersona(int id) {
         //acá si no encuentro la persona, devuelvo null por eso va el orElse
         Persona perso = rPersona.findById(id).orElse(null);
         return perso;
     }
+
     /*
     @Override
     public Optional<Persona> getOne(Long id){
         return rPersona.findById(id);
     }*/
+    @Override
+    public void savePersona(Persona perso) {
+       rPersona.save(perso);
+    }
+    
+    @Override
+
+    public boolean existById(int id) {
+
+        rPersona.existsById(id);
+
+        return true;
+
+    }
+    
+
 }

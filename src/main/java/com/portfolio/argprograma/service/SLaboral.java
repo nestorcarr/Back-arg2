@@ -29,14 +29,29 @@ public class SLaboral implements ISLaboral{
     }
 
     @Override
-    public void borrarTrabajo(Long id) {
+    public void borrarTrabajo(int id) {
        rLaboral.deleteById(id);
     }
 
     @Override
-    public Laboral buscarTrabajo(Long id) {
+    public Laboral buscarTrabajo(int id) {
         //acá si no encuentro la persona, devuelvo null por eso va el orElse
         Laboral traba = rLaboral.findById(id).orElse(null);
         return traba;
+    }
+    
+    @Override
+    public void saveLaboral(Laboral traba) {
+       rLaboral.save(traba);
+    }
+    
+    @Override
+
+    public boolean existById(int id) {
+
+        rLaboral.existsById(id);
+
+        return true;
+
     }
 }

@@ -18,18 +18,18 @@ import javax.persistence.Id;
 public class Educacion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
     @NotNull
-    @Size(min = 1, max = 40, message = "no cumple con la longitud")
+    @Size(min = 1, max = 60, message = "no cumple con la longitud")
     private String universidad;
     @NotNull
     @Size(min = 1, max = 140, message = "no cumple con la longitud")
     private String logo;
     @NotNull
-    @Size(min = 1, max = 40, message = "no cumple con la longitud")
+    @Size(min = 1, max = 60, message = "no cumple con la longitud")
     private String titulo;
     @NotNull
-    @Size(min = 1, max = 40, message = "no cumple con la longitud")
+    @Size(min = 1, max = 60, message = "no cumple con la longitud")
     private String institucion;
     @NotNull
     @Size(min = 1, max = 40, message = "no cumple con la longitud")

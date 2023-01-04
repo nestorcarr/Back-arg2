@@ -29,14 +29,28 @@ public class SEducacion implements ISEducacion {
     }
 
     @Override
-    public void borrarEducacion(Long id) {
+    public void borrarEducacion(int id) {
        rEducacion.deleteById(id);
     }
 
     @Override
-    public Educacion buscarEducacion(Long id) {
+    public Educacion buscarEducacion(int id) {
         //acá si no encuentro la educacion, devuelvo null por eso va el orElse
         Educacion educa = rEducacion.findById(id).orElse(null);
         return educa;
+    }
+    @Override
+    public void saveEducacion(Educacion educa) {
+       rEducacion.save(educa);
+    }
+    
+    @Override
+
+    public boolean existById(int id) {
+
+        rEducacion.existsById(id);
+
+        return true;
+
     }
 }

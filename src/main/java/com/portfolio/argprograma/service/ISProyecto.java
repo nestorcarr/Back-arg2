@@ -10,6 +10,8 @@ import java.util.List;
 public interface ISProyecto {
     public List<Proyecto> verProyecto();
     public void crearProyecto(Proyecto proye);
-    public void borrarProyecto(Long id);
-    public Proyecto buscarProyecto(Long id);
+    public void borrarProyecto(int id);
+    public Proyecto buscarProyecto(int id);
+    public void saveProyecto(Proyecto proye);
+    public boolean existById(int id);
 }

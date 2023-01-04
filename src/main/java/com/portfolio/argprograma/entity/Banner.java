@@ -21,7 +21,7 @@ import lombok.Setter;
 public class Banner {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
     @NotNull
     @Size(min = 1, max = 140, message = "no cumple con la longitud")
     private String carouselimag;

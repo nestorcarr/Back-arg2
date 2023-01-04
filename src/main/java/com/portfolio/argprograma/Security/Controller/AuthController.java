@@ -69,7 +69,7 @@ public class AuthController {
         usuario.setRoles(roles);
         usuarioService.save(usuario);
         
-        return new ResponseEntity(new Mensaje("Usuario guardado"),HttpStatus.CREATED);
+        return new ResponseEntity(new Mensaje("Usuario creado"),HttpStatus.CREATED);
     }
     
     @PostMapping("/login")

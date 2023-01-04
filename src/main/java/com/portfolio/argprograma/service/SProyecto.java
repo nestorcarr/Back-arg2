@@ -31,14 +31,28 @@ public class SProyecto implements ISProyecto{
     }
 
     @Override
-    public void borrarProyecto(Long id) {
+    public void borrarProyecto(int id) {
        rProyecto.deleteById(id);
     }
 
     @Override
-    public Proyecto buscarProyecto(Long id) {
+    public Proyecto buscarProyecto(int id) {
         //acá si no encuentro el proyecto, devuelvo null por eso va el orElse
         Proyecto proye = rProyecto.findById(id).orElse(null);
         return proye;
+    }
+    
+    @Override
+    public void saveProyecto(Proyecto proye) {
+       rProyecto.save(proye);
+    }
+    
+    @Override
+    public boolean existById(int id) {
+
+        rProyecto.existsById(id);
+
+        return true;
+
     }
 }

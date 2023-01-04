@@ -20,7 +20,7 @@ import javax.persistence.Id;
 public class Habilidades {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
     @NotNull
     @Size(min = 1, max = 20, message = "no cumple con la longitud")
     private String habilidad;
